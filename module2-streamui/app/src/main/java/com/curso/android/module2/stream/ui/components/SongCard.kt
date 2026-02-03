@@ -50,7 +50,7 @@ fun SongCard(
                 modifier = Modifier.align(Alignment.TopEnd)//para ponerlo arriba a la derecha
             ) {
                 Icon(
-                    imageVector = if(song.isFavority)
+                    imageVector = if(song.isFavorite)
                         Icons.Filled.Favorite
                     else
                         Icons.Outlined.FavoriteBorder, contentDescription = "Toggle favorite"

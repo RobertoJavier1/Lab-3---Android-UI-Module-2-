@@ -210,7 +210,27 @@ class HomeViewModel(
         loadCategories()
     }
 
-    fun toggleFavorite(id:String){
+    fun toggleFavorite(id: String) {
+        //obtiene el estado actual expuesto por el stateflow
+        val currentState = _uiState.value
 
+        if (currentState is HomeUiState.Success) {
+            //nueva lista de categorias con las canciones actualizadas
+            val updatedCategories = currentState.categories.map { category ->
+                category.copy(
+                    //recorre las canciones de toda la categoria
+                    songs = category.songs.map { song ->
+                        if (song.id == id) {
+                            song.copy(isFavorite = !song.isFavorite)
+                        } else {
+                            song
+                        }
+                    }
+                )
+            }
+
+            //publica el nuevo estado para que compose recomponga la ui
+            _uiState.value = HomeUiState.Success(updatedCategories)
+        }
     }
 }
