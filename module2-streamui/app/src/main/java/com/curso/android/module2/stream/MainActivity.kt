@@ -9,8 +9,10 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Search
+import androidx.compose.material.icons.filled.Star
 import androidx.compose.material.icons.outlined.Home
 import androidx.compose.material.icons.outlined.Search
+import androidx.compose.material.icons.outlined.Star
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -36,6 +38,7 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.toRoute
 import com.curso.android.module2.stream.data.repository.MusicRepository
+import com.curso.android.module2.stream.ui.navigation.HighlightsDestination
 import com.curso.android.module2.stream.ui.navigation.HomeDestination
 import com.curso.android.module2.stream.ui.navigation.LibraryDestination
 import com.curso.android.module2.stream.ui.navigation.PlayerDestination
@@ -44,6 +47,7 @@ import com.curso.android.module2.stream.ui.screens.HomeScreen
 import com.curso.android.module2.stream.ui.screens.LibraryScreen
 import com.curso.android.module2.stream.ui.screens.PlayerScreen
 import com.curso.android.module2.stream.ui.screens.SearchScreen
+import com.curso.android.module2.stream.ui.screens.HighlightsScreen
 import com.curso.android.module2.stream.ui.theme.StreamUITheme
 import org.koin.compose.koinInject
 import kotlin.reflect.KClass
@@ -157,6 +161,13 @@ fun getBottomNavItems(): List<BottomNavItem> {
             label = "Library",
             selectedIcon = { libraryIcon },
             unselectedIcon = { libraryIcon }
+        ),
+        //se agrega el item para ir a la pantalla de favoritos
+        BottomNavItem(
+            route = HighlightsDestination::class,
+            label = "HighLights",
+            selectedIcon = {Icons.Filled.Star},
+            unselectedIcon = {Icons.Outlined.Star}
         )
     )
 }
@@ -254,6 +265,7 @@ fun StreamUIApp() {
         currentDestination?.hasRoute(SearchDestination::class) == true -> "Search"
         currentDestination?.hasRoute(LibraryDestination::class) == true -> "Your Library"
         currentDestination?.hasRoute(PlayerDestination::class) == true -> "Now Playing"
+        currentDestination?.hasRoute(HighlightsDestination::class) == true -> "HighLights" //agregar titulo para cuando este en esta pantalla
         else -> "StreamUI"
     }
 
@@ -335,6 +347,7 @@ fun StreamUIApp() {
                                             HomeDestination::class -> HomeDestination
                                             SearchDestination::class -> SearchDestination
                                             LibraryDestination::class -> LibraryDestination
+                                            HighlightsDestination::class -> HighlightsDestination
                                             else -> HomeDestination
                                         }
                                     ) {
@@ -479,6 +492,11 @@ fun StreamUIApp() {
                             navController.popBackStack()
                         }
                     )
+                }
+
+                composable<HighlightsDestination>{ backStackEntry ->
+                    HighlightsScreen()
+
                 }
             }
         }
