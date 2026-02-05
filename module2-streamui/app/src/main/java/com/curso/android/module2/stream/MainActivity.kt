@@ -29,6 +29,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavDestination.Companion.hasRoute
 import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavGraph.Companion.findStartDestination
@@ -49,6 +50,8 @@ import com.curso.android.module2.stream.ui.screens.PlayerScreen
 import com.curso.android.module2.stream.ui.screens.SearchScreen
 import com.curso.android.module2.stream.ui.screens.HighlightsScreen
 import com.curso.android.module2.stream.ui.theme.StreamUITheme
+import com.curso.android.module2.stream.ui.viewmodel.HomeViewModel
+import org.koin.androidx.compose.koinViewModel
 import org.koin.compose.koinInject
 import kotlin.reflect.KClass
 
@@ -269,6 +272,8 @@ fun StreamUIApp() {
         else -> "StreamUI"
     }
 
+    val homeViewModel: HomeViewModel = koinViewModel() // para usar el mismo viewModel para highlits y home
+
     Surface(
         modifier = Modifier.fillMaxSize(),
         color = MaterialTheme.colorScheme.background
@@ -401,6 +406,7 @@ fun StreamUIApp() {
                  */
                 composable<HomeDestination> {
                     HomeScreen(
+                        viewModel = homeViewModel,
                         onSongClick = { song ->
                             /**
                              * NAVEGACIÓN TYPE-SAFE
@@ -495,7 +501,9 @@ fun StreamUIApp() {
                 }
 
                 composable<HighlightsDestination>{ backStackEntry ->
-                    HighlightsScreen()
+                    HighlightsScreen(
+                        viewModel = homeViewModel
+                    )
 
                 }
             }

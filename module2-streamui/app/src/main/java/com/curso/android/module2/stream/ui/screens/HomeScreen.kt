@@ -95,7 +95,7 @@ import org.koin.compose.viewmodel.koinViewModel
  */
 @Composable
 fun HomeScreen(
-    viewModel: HomeViewModel = koinViewModel(),
+    viewModel: HomeViewModel,
     onSongClick: (Song) -> Unit,
     modifier: Modifier = Modifier
 ) {
