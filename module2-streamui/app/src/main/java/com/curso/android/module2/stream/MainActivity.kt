@@ -502,7 +502,10 @@ fun StreamUIApp() {
 
                 composable<HighlightsDestination>{ backStackEntry ->
                     HighlightsScreen(
-                        viewModel = homeViewModel
+                        viewModel = homeViewModel,
+                        onSongClick = {song->
+                            navController.navigate(PlayerDestination(songId = song.id))
+                        }
                     )
 
                 }
