@@ -153,18 +153,18 @@ fun getBottomNavItems(): List<BottomNavItem> {
             selectedIcon = { Icons.Filled.Home },
             unselectedIcon = { Icons.Outlined.Home }
         ),
-        BottomNavItem(
-            route = SearchDestination::class,
-            label = "Search",
-            selectedIcon = { Icons.Filled.Search },
-            unselectedIcon = { Icons.Outlined.Search }
-        ),
-        BottomNavItem(
-            route = LibraryDestination::class,
-            label = "Library",
-            selectedIcon = { libraryIcon },
-            unselectedIcon = { libraryIcon }
-        ),
+//        BottomNavItem(
+//            route = SearchDestination::class,
+//            label = "Search",
+//            selectedIcon = { Icons.Filled.Search },
+//            unselectedIcon = { Icons.Outlined.Search }
+//        ),
+//        BottomNavItem(
+//            route = LibraryDestination::class,
+//            label = "Library",
+//            selectedIcon = { libraryIcon },
+//            unselectedIcon = { libraryIcon }
+//        ),
         //se agrega el item para ir a la pantalla de favoritos
         BottomNavItem(
             route = HighlightsDestination::class,
@@ -265,8 +265,8 @@ fun StreamUIApp() {
      */
     val topBarTitle = when {
         currentDestination?.hasRoute(HomeDestination::class) == true -> "StreamUI"
-        currentDestination?.hasRoute(SearchDestination::class) == true -> "Search"
-        currentDestination?.hasRoute(LibraryDestination::class) == true -> "Your Library"
+//        currentDestination?.hasRoute(SearchDestination::class) == true -> "Search"
+//        currentDestination?.hasRoute(LibraryDestination::class) == true -> "Your Library"
         currentDestination?.hasRoute(PlayerDestination::class) == true -> "Now Playing"
         currentDestination?.hasRoute(HighlightsDestination::class) == true -> "HighLights" //agregar titulo para cuando este en esta pantalla
         else -> "StreamUI"
@@ -350,8 +350,8 @@ fun StreamUIApp() {
                                     navController.navigate(
                                         when (item.route) {
                                             HomeDestination::class -> HomeDestination
-                                            SearchDestination::class -> SearchDestination
-                                            LibraryDestination::class -> LibraryDestination
+//                                            SearchDestination::class -> SearchDestination
+//                                            LibraryDestination::class -> LibraryDestination
                                             HighlightsDestination::class -> HighlightsDestination
                                             else -> HomeDestination
                                         }
