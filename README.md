@@ -1,12 +1,15 @@
 # Lab3
 
-Este laboratorio se divide en dos partes y tiene como objetivo aplicar conceptos de arquitectura limpia, manejo de estado y separación de responsabilidades usando **Jetpack Compose** y **MVVM**.
+Este laboratorio se divide en dos partes y tiene como objetivo aplicar conceptos de **arquitectura limpia**, **manejo de estado** y **separación de responsabilidades** usando **Jetpack Compose** y **MVVM**.
 
 ---
 
 ## Parte 1
 
 En la Parte 1 se implementó el sistema de **favoritos** en el `HomeScreen`, permitiendo marcar y desmarcar canciones como favoritas y reflejar el cambio directamente en la interfaz.
+
+**Video explicación Parte 1:**  
+https://youtu.be/zT7N7N2Z3Tc
 
 ### DOD (Definition of Done)
 
@@ -38,7 +41,11 @@ En la Parte 1 se implementó el sistema de **favoritos** en el `HomeScreen`, per
 En la Parte 2 se creó una **nueva pantalla** que muestra únicamente las canciones favoritas.  
 Esta pantalla es accesible mediante un botón en la **barra de navegación**.
 
+**Video explicación Parte 2:**  
+https://youtu.be/GBeV8jryfC4
+
 ### DOD (Definition of Done)
+
 - ✅ **Route exists**  
   `HighlightsDestination` defined in `Destinations.kt`.
 
