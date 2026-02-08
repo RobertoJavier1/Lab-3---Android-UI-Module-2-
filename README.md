@@ -9,7 +9,7 @@ Este laboratorio se divide en dos partes y tiene como objetivo aplicar conceptos
 En la Parte 1 se implementó el sistema de **favoritos** en el `HomeScreen`, permitiendo marcar y desmarcar canciones como favoritas y reflejar el cambio directamente en la interfaz.
 
 **Video explicación Parte 1:**  
-https://youtu.be/zT7N7N2Z3Tc
+https://youtu.be/dK513OZ-PcQ
 
 ### DOD (Definition of Done)
 
